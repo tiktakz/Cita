@@ -1,0 +1,282 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+@font-face {
+  font-family: 'Cafe24Ssurround';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Katuri';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_13@1.0/Katuri.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GangwonEdu_OTFBoldA';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Tenada';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/Tenada.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GongGothicMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+.header {
+  border: 0px solid rgb(0, 0, 0);
+  width: 346px;
+  height: 40px;
+  text-align: left;
+  font-size: 45px;
+  padding: 5px 5px 5px 5px;
+  margin: 0px 12px 0px 9px;
+  margin-bottom: 0px;
+  position: fixed;
+  background-color: #ffffff;
+  border-bottom: solid 4px #ceb4ff;
+  /* border-top: solid #ceb4ff; */
+  display: flex;
+  justify-content: space-between;
+}
+.header1 {
+  display: flex;
+  justify-content: space-between;
+  width: 140px;
+  border-width: 1px;
+  float: left;
+  /* border: solid 1px black; */
+}
+.header2 {
+  display: flex;
+  justify-content: space-between;
+  width: 90px;
+  /* border: solid 1px black; */
+}
+.header_border {
+  margin: 5px 12px 0px 12px;
+  height: 3px;
+  background-color: #ceb4ff;
+  border: 0px;
+}
+
+#change {
+  color: #a17fe0;
+  font-size: 40px;
+
+  flex: 3;
+  vertical-align: text-top;
+}
+#search {
+  color: #a17fe0;
+  font-size: 40px;
+
+  vertical-align: text-top;
+}
+#user {
+  color: #a17fe0;
+  font-size: 40px;
+  text-align: right;
+  vertical-align: text-top;
+}
+.cita {
+  font-size: 37px;
+  font-family: 'Tenada';
+  background-image: linear-gradient(to right, #ec77ab 0%, #7873f5 100%);
+  color: transparent;
+  -webkit-background-clip: text;
+  vertical-align: 10px;
+  vertical-align: middle;
+  margin-top: 5px;
+}
+
+body {
+  background-color: #ffffff;
+  font-family: 'GilbeotRainbow';
+}
+.content {
+  margin: 0px 0px 7px 7px;
+}
+.feed {
+  border: 0px solid rgb(143, 37, 37);
+  /* background-color: white; */
+  width: 340px;
+  /* height: 700px; */
+  margin: 7px;
+  float: left;
+  border-radius: 15px;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+  font-family: 'GangwonEdu_OTFBoldA';
+}
+/*.feed_img {
+}*/
+.img_box {
+  overflow: hidden;
+  border: px solid rgb(143, 37, 37);
+  border-radius: 15px 15px 0 0 / 15px 15px 0 0;
+  margin: 0px 0px 0px 0px;
+  width: 340px;
+  height: 350px;
+  object-fit: fill;
+}
+.userID {
+  /* border: solid 1px black; */
+  justify-content: flex-start;
+  display: flex;
+  width: 200px;
+}
+.userImg {
+  /* border: solid 1px black; */
+  display: flex;
+  margin: 3px 0px 5px 7px;
+}
+.user_img {
+  width: 25px;
+  height: 25px;
+  border-radius: 70%;
+  overflow: hidden;
+  display: flex;
+}
+.userName {
+  /* border: solid 1px black; */
+  display: flex;
+  display: table-cell;
+  height: 30px;
+  line-height: 30px;
+  font-size: 15px;
+  margin-left: 5px;
+}
+.heart {
+  width: 23px;
+  height: 23px;
+  margin: 5px 7px 0px 0px;
+  /* border: solid 2px black; */
+  display: flex;
+}
+.addition {
+  display: flex;
+  justify-content: space-between;
+  /* border: solid 1px black; */
+}
+.feed_border {
+  margin: 2px 7px 5px 7px;
+  height: 1.5px;
+  background-color: #a17fe0;
+  border: 0px;
+}
+.feed_text {
+  /* border: solid 2px black; */
+  margin: 10px 7px 5px 7px;
+}
+.comment_posting {
+  /* border: solid 2px black; */
+
+  margin: 10px 7px 10px 7px;
+}
+.user_comment_posting {
+  /* border: solid 2px black; */
+  display: flex;
+}
+/* .user_id {
+  border: solid 2px black;
+  display: flex;
+  float: left;
+} */
+.user_comment {
+  /* border: solid 2px black; */
+  display: flex;
+  margin-left: 30px;
+}
+.comment {
+  /* border: solid 2px black; */
+  /* position: absolute; */
+  margin: 0px 7px 0px 7px;
+  font-family: 'GangwonEdu_OTFBoldA';
+}
+.CommentsBox {
+  border-style: solid;
+  margin: 20px 0px 10px 0px;
+  font-size: 9px;
+  border-color: #a17fe0;
+  border-radius: 9px;
+  border-width: 4px;
+  text-align: right;
+}
+.comment_add {
+  font-size: 17px;
+  margin: 0px 0px px 0px;
+  white-space: nowrap;
+  border-color: #fcfbff00;
+}
+.posting {
+  height: 30px;
+  background: rgba(255, 255, 255, 0);
+  color: #c389ef;
+  font-size: 17px;
+  font-weight: bold;
+  margin: 0px 5px 0px 0px;
+  vertical-align: super;
+  border-color: #ffffff00;
+}
+.detail-pic {
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+}
+
+.title {
+  font-size: 21px;
+  width:500px;
+  float: right;
+  font-family: 'GongGothicMedium';
+  padding-top: 7px;
+  padding-left: 7px;
+}
+
+
+.text {
+  padding-left: 8px;
+  font-family:'NanumSquare';
+  font-size: 15px;
+}
+
+.username_style{
+  font-size:20px; 
+  font-family:'GangwonEdu_OTFBoldA'; 
+  padding-right:5px; 
+  padding-top:3px;
+  border: #ff0000 solid 0px;
+  margin-left: -40px;
+  margin-right: 5px;
+  width: 100px;
+  height: 20px;
+  color: #6560ff;
+  padding-top: 10px;
+}
+
+.prof {
+  border-radius: 70%;
+  width: 40px;
+  height: 40px;
+  margin: auto;
+  margin-top: 0px;
+  border: 0px #a17fe0 solid;
+  overflow: hidden;
+}

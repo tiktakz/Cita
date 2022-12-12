@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+    <!-- Cita Chat Feed Page -->
+    <head>
+        <title>CITA:CHAT</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="./CSS/ChatMainStyle.css">
+        <!-- MetaViewPoint -->
+        <meta name="viewport" content="width=375,initial-scale=1,user-scalable=no,minimum-scale=1,maximum-scale=1">
+        <!-- googleFont -->
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+        <!-- HeaderMenu -->
+        <div id="header">
+            <ul>
+                 <!-- Logo -->
+                 <li class="headerLogo" onClick ="location.href='./chatindex.html'">
+                     CITA
+                 </li>
+                 <!-- ChangeBtn -->
+                 <li class="headerBtn">
+                     <span onclick="location.href='index.html'" class="material-symbols-outlined" id="iconChangeState">
+                         wifi_protected_setup
+                     </span>
+                 </li>
+                 <!-- Search -->
+                 <li class="headerSearch">
+                     <span class="material-symbols-outlined" id="iconSearch">
+                         search
+                     </span>
+                 </li>
+                 <!-- UserProfile -->
+                 <li class="headerProfile">
+                     <div class="headerProfileImg">
+                         <img class="userProfileImg" id="userProfile" src="https://cdn.pixabay.com/photo/2017/11/06/13/45/cap-2923682_960_720.jpg">
+                     </div>
+                 </li>
+            </ul>
+         </div>
+        <!-- Content -->
+        <div id="content">
+            <!-- Category -->
+            <details>
+                <summary>
+                    <span style="padding-top:8px" class="material-symbols-outlined">
+                        sports_basketball
+                    </span>
+                </summary>
+                <div class="typeList">
+                    <ul>
+                        <li>
+                            <button type="button" class="colorSet" onClick ="location.href='./chatindex_sports.html'" >
+                                <span class="material-symbols-outlined">
+                                    sports_basketball
+                                </span>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="colorSet" onClick ="location.href='./chatindex_sms.html'">
+                                <span class="material-symbols-outlined">
+                                    sms
+                                </span>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="colorSet" onClick ="location.href='./chatindex_restaurant.html'">
+                                <span class="material-symbols-outlined">
+                                    restaurant
+                                </span>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="colorSet" onClick ="location.href='./chatindex_story.html'">
+                                <span class="material-symbols-outlined">
+                                    auto_stories
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </details>
+            <!-- VerticalScroll -->
+            <div class="contentVerticalScrollBar">
+                <ul>
+                    <!-- ChatCardObject -->
+                    <li class="firstContentCard">
+                        <ul class="chatCard" style="background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);">
+                            <li class="chatProfileImg">
+                                <img class="user_Img"src="https://image.cine21.com/resize/cine21/still/2019/0213/14_38_39__5c63ad5fdbf9b[X252,310].jpg">
+                            </li>
+                            <li class="chatTitle">
+                                SW 상상기업 CITA
+                            </li>
+                            <li class="chatUser">
+                                CITA
+                            </li>
+                            <li class="chatDescripton">
+                                CITA 공식 채팅방입니다
+                            </li>
+                            <li class="chatBtn">
+                                <a href="https://getstream.io/chat/demos/messaging/">
+                                    <img class="chatLink" src="./image/chat1.png">
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <span class="container">
+                    </span>
+                    <!-- LastContent -->
+                    <li class="lastContentCard">
+                        <ul class="chatCard" style="background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);">
+                            <li class="lastChatMarker">
+                                +
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="chatMakerBtn">
+                <span onclick="location.href='chat.html'" class="material-symbols-outlined" id="chatMakerBtn">
+                    add_comment
+                </span>
+            </div>
+        </div>
+    </body>
+    <script>
+        // FIREBASE CONFIG    
+            const firebaseConfig = {
+                apiKey: "AIzaSyDAviFAwj0F60qzBjhGymUL-hzpErarvl8",
+                authDomain: "cita-a057c.firebaseapp.com",
+                databaseURL: "https://cita-a057c-default-rtdb.asia-southeast1.firebasedatabase.app",
+                projectId: "cita-a057c",
+                storageBucket: "cita-a057c.appspot.com",
+                messagingSenderId: "583943011318",
+                appId: "1:583943011318:web:98f9864c4557a420fc25d7",
+                measurementId: "G-35W2MMH9S8"
+            };
+            firebase.initializeApp(firebaseConfig);
+        </script>
+
+    <script>
+            firebase.auth().onAuthStateChanged((user)=> {
+        // login 있으면
+        if (user) {
+        }
+    })
+
+        const db = firebase.firestore();
+        db.collection('chat').where("category", "==", "sports").get().then((result)=>{
+
+        result.forEach((doc)=> {
+        // random 사진
+        var maximgno = 10; // 총 20개 파일
+        var imgno;
+        do imgno = Math.random().toString().charAt(2);
+        while (imgno > maximgno || imgno < 1);
+        var imgfile="./pics/"+imgno+".jpeg";
+
+        // 채팅방 생성
+        var template = 
+        `<li>
+        <ul class="chatCard" style="background-image : ${doc.data().color}">
+        <li class="chatProfileImg">
+        <img class="user_Img" src="${imgfile}">
+        </li>
+        <li class="chatTitle">
+            ${doc.data().ment}
+        </li>
+        <li class="chatUser">
+            ${doc.data().usr}
+        </li>
+        <li class="chatDescripton">
+            ${doc.data().intro}
+        </li>
+        <li class="chatBtn">
+        <a href="https://getstream.io/chat/demos/messaging/">
+        <img class="chatLink" src="./image/chat1.png">
+        </a>
+        </li>
+        </ul>
+    </li>`
+        $('.container').append(template);
+    })
+})
+
+$('#userProfile').click(function () {
+        firebase.auth().signOut().then(()=> {
+          console.log("sign out");
+          alert('로그아웃 했습니다')
+          window.location.href = '/login.html';
+        })
+      });
+
+    </script>
+
+
+</html>

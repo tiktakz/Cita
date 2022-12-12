@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./CSS/postDe_new.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
+    <title>CITA:DETAIL</title>
+  </head>
+  <body>
+    <div class="header">
+      <div class="header1">
+        <span class="cita" onClick ="location.href='./index.html'" >CITA</span>
+        <span><a href="./upload1.html"><i class="material-icons icon" id="change">edit</i></span></a>
+      </div>
+      <div class="header2">
+        <span id="username" class="username_style"></span>
+        <span id="userProfile" class="prof" onClick ="location.href='./loginTest1.html'"><img src="./image/woman.jpg" width="100%" height="130%" /></span>
+      </div>
+    </div>
+    <br /><br /><br />
+    <div class="container">
+      
+    <div class="content">
+      <div class="feed">
+        <div class="detail-pic my-4" style="background-image: url('https://placeimg.com/640/380/tech');"></div>
+        <div class="addition">
+            <div class="title" id="title">제목</div>
+          <img src="image/heart.png" class="heart" />
+        </div>
+        <hr class="feed_border" />
+        <div class="text" id="text">내용</div>
+        <hr class="feed_border" />
+        <!-- user_comment_posting이 하나씩 추가되는 방식 -->
+        <div class="comment_posting">
+          <div class="user_comment_posting">
+            <div class="user_id">binda</div>
+            <div class="user_comment">안녕하세요</div>
+          </div>
+          <div class="user_comment_posting">
+            <div class="user_id">wpolice</div>
+            <div class="user_comment">안녕하세요</div>
+          </div>
+        </div>
+        <div class="comment">
+          <div class="CommentsBox">
+            <textarea cols="22" rows="1" placeholder="댓글 달기" class="comment_add"></textarea>
+            <button class="posting" type="button">게시</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    // FIREBASE CONFIG
+    const firebaseConfig = {
+      apiKey: 'AIzaSyDAviFAwj0F60qzBjhGymUL-hzpErarvl8',
+      authDomain: 'cita-a057c.firebaseapp.com',
+      databaseURL: 'https://cita-a057c-default-rtdb.asia-southeast1.firebasedatabase.app',
+      projectId: 'cita-a057c',
+      storageBucket: 'cita-a057c.appspot.com',
+      messagingSenderId: '583943011318',
+      appId: '1:583943011318:web:98f9864c4557a420fc25d7',
+      measurementId: 'G-35W2MMH9S8',
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <script>
+    const db = firebase.firestore();
+    const storage = firebase.storage();
+
+
+    // detail 상세
+    var query = new URLSearchParams(window.location.search);
+
+    db.collection('post')
+      .doc(query.get('id'))
+      .get()
+      .then((result) => {
+        firebase.auth().onAuthStateChanged((user)=> {
+        // login 있으면
+        if (user) {
+            console.log(user);
+            console.log(user.displayName);
+            $('#username').html("안녕, " + user.displayName);
+
+        } else {
+          $('#username').html("게스트 유저");
+        }
+    })
+        //console.log(result.data());
+        $('.title').html(result.data().제목);
+        $('.text').html(result.data().내용);
+        $('.date').html(result.data().날짜);
+        $('.detail-pic').css('background-image', `url(${result.data().이미지})`);
+      });
+  </script>
+</html>

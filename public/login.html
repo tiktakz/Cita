@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!-- Cita Login Page Final -->
+<html lang="kr">
+<head>
+	<title>CITA:LOGIN</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="CSS/util.css">
+	<link rel="stylesheet" type="text/css" href="CSS/mainv2.css">
+<!--===============================================================================================-->
+
+<!-- Firebase Scripts -->
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form">
+					<span class="login100-form-title p-b-26">
+						Welcome to
+					</span>
+					<span class="login100-form-title p-b-48">
+						<!-- <i class="zmdi zmdi-font"></i> -->
+						<span class="loginTitleStyle">CITA</span>
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate = "잘못된 이메일 형식입니다.">
+						<input class="input100" type="text" name="text" id="email">
+						<span class="focus-input100" data-placeholder="Email"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="비밀번호를 입력해주세요">
+						<span class="btn-show-pass">
+							<i class="zmdi zmdi-eye"></i>
+						</span>
+						<input class="input100" type="password" name="pass" id="pw">
+						<span class="focus-input100" data-placeholder="Password"></span>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button type="button" class="login100-form-btn" id="login">
+								login
+							</button>
+						</div>
+					</div>
+
+					<div class="text-center p-t-115">
+						<span class="txt1">
+							혹시 계정이 없으신가요?
+						</span>
+
+						<a class="txt2" href="./register.html">
+							&nbsp;&nbsp;회원 가입
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+	<script src="js/main.js"></script>
+
+<!--===============================================================================================-->
+
+
+	<!-- Firebase Config Script -->
+	<script>
+		const firebaseConfig = {
+		apiKey: "AIzaSyDAviFAwj0F60qzBjhGymUL-hzpErarvl8",
+		authDomain: "cita-a057c.firebaseapp.com",
+		databaseURL: "https://cita-a057c-default-rtdb.asia-southeast1.firebasedatabase.app",
+		projectId: "cita-a057c",
+		storageBucket: "cita-a057c.appspot.com",
+		messagingSenderId: "583943011318",
+		appId: "1:583943011318:web:98f9864c4557a420fc25d7",
+		measurementId: "G-35W2MMH9S8"
+		};
+		firebase.initializeApp(firebaseConfig);
+	</script>
+
+	<script>
+		const db = firebase.firestore();
+		const storage = firebase.storage();
+	
+		// 로그인하기
+		$('#login').click(function() {
+			var email = $('#email').val();
+			var password = $('#pw').val();
+			firebase.auth().signInWithEmailAndPassword(email, password).then ((result) => {
+				console.log("로그인 성공");
+				alert('로그인 되었습니다');
+				$('#email').val('');
+				$('#pw').val('');
+				window.location.href = './index.html';
+			}).catch((err) => {
+				alert('로그인 실패');
+			})
+		})
+	</script>
+
+</body>
+</html>

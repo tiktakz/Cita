@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>CITA:REGISTER</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="CSS/util.css">
+	<link rel="stylesheet" type="text/css" href="CSS/mainv2.css">
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form">
+					<span class="login100-form-title p-b-26">
+						Welcome to
+					</span>
+					<span class="login100-form-title p-b-48">
+						<!-- <i class="zmdi zmdi-font"></i> -->
+						<span class="loginTitleStyle">CITA</span>
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate="올바른 닉네임을 입력해주세요">
+						<input class="input100" type="text" name="name" id="usrname">
+						<span class="focus-input100" data-placeholder="Name"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "잘못된 이메일 형식입니다.">
+						<input id="email-new" class="input100" type="text" name="text">
+						<span class="focus-input100" data-placeholder="Email"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="비밀번호를 입력해주세요">
+						<span class="btn-show-pass">
+							<i class="zmdi zmdi-eye"></i>
+						</span>
+						<input id="pw-new" class="input100" type="password" name="pass">
+						<span class="focus-input100" data-placeholder="Password"></span>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button type="button" id="register" class="login100-form-btn">
+								register
+							</button>
+							<div>
+							<div class="login100-form-bgbtn"></div>
+							<button type="button" id="login" class="login100-form-btn" onclick="location.href='./index.html'">
+								Login
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+	<script src="js/main.js"></script>
+<!--===============================================================================================-->
+	<script>
+		const firebaseConfig = {
+		apiKey: "AIzaSyDAviFAwj0F60qzBjhGymUL-hzpErarvl8",
+		authDomain: "cita-a057c.firebaseapp.com",
+		databaseURL: "https://cita-a057c-default-rtdb.asia-southeast1.firebasedatabase.app",
+		projectId: "cita-a057c",
+		storageBucket: "cita-a057c.appspot.com",
+		messagingSenderId: "583943011318",
+		appId: "1:583943011318:web:98f9864c4557a420fc25d7",
+		measurementId: "G-35W2MMH9S8"
+		};
+		firebase.initializeApp(firebaseConfig);
+	  </script>
+	  <script>
+		  console.log(firebase);
+		const db = firebase.firestore();
+		const storage = firebase.storage();
+		// 가입하기
+		$('#register').click(function () {
+		  console.log("hello");
+		  var email = $('#email-new').val();
+		  var password = $('#pw-new').val();
+		  var usrname = $('#usrname').val();
+  
+		  firebase
+			.auth()
+			.createUserWithEmailAndPassword(email, password)
+			.then((result) => {
+			  console.log(result);
+			  result.user.updateProfile({ displayName: usrname });
+			  alert('회원가입을 성공했습니다');
+			  console.log(usrname);
+			//   $('#email-new').val('');
+			//   $('#pw-new').val('');
+			//   $('#usrname').val('');
+			  //window.location.href = './login.html';
+			});
+		});
+	  </script>
+
+	<div id="dropDownSelect1"></div>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!-- Cita Upload Page Final -->
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CITA:WRITE</title>
+    <!-- CSS -->
+    <link href="./CSS/post.css" rel="stylesheet" />
+    <!-- <link href="./CSS/btn.css" rel="stylesheet"/> -->
+    <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon"> -->
+    <!-- FONT -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="header1">
+        <span class="cita" onClick ="location.href='./index.html'" >CITA</span>
+        <span><a href="./upload1.html"><i class="material-icons icon" id="change">edit</i></span></a>
+      </div>
+      <div class="header2">
+        <span id="username" class="username_style"></span>
+        <span id="userProfile" class="prof" onClick ="location.href='./loginTest1.html'"><img src="./image/woman.jpg" width="100%" height="130%" /></span>
+      </div>
+    </div>
+    <br /><br /><br />
+
+    <!-- <div class="container mt-3">
+        <input type="text" class="form-control mt-2" id="title" placeholder="title">
+        <textarea class="form-control mt-2" id="content">content</textarea>
+        <input type="text" class="form-control mt-2" id="price" placeholder="price">
+        <input class="form-control mt-2" type="file" id="image">
+        <button class="btn btn-danger mt-3" id="send">올리기</button>
+      </div> -->
+
+    <div class="container">
+      <div class="write_box">
+        <textarea cols="27" rows="1" placeholder="제목" class="content_write" id="title"></textarea>
+        <textarea cols="27" rows="11" placeholder="내용을 입력하세요." class="content_write" id="content"></textarea>
+      </div>
+
+      <div class="img_box">
+        <div class="img_upload">
+          <label for="file">
+            <div class="btn-upload">
+              <i class="material-icons">camera_alt</i>
+            </div>
+          </label>
+          <label for="image" class="button-63">사진 업로드하기!</label>
+          <input class="fileclass" type="file" style="font-family:'GangwonEdu_OTFBoldA';" name="file" id="image" />
+        </div>
+      </div>
+
+      <button class="btn" type="button" id="send">완료</button>
+      <button class="btn" type="button" id="cancle">취소</button>
+    </div>
+
+    <script>
+      // FIREBASE CONFIG
+      const firebaseConfig = {
+        apiKey: 'AIzaSyDAviFAwj0F60qzBjhGymUL-hzpErarvl8',
+        authDomain: 'cita-a057c.firebaseapp.com',
+        databaseURL: 'https://cita-a057c-default-rtdb.asia-southeast1.firebasedatabase.app',
+        projectId: 'cita-a057c',
+        storageBucket: 'cita-a057c.appspot.com',
+        messagingSenderId: '583943011318',
+        appId: '1:583943011318:web:98f9864c4557a420fc25d7',
+        measurementId: 'G-35W2MMH9S8',
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <script>
+      const db = firebase.firestore();
+      const storage = firebase.storage();
+
+      $('#send').click(function () {
+        var file = document.querySelector('#image').files[0];
+        var storageRef = storage.ref();
+        var savePos = storageRef.child('image/' + file.name);
+        var upload = savePos.put(file);
+
+        upload.on(
+          'state_changed',
+          // 변화시 동작하는 함수
+          null,
+          //에러시 동작하는 함수
+          (error) => {
+            console.error('실패사유는', error);
+          },
+          // 성공시 동작하는 함수
+          () => {
+            upload.snapshot.ref.getDownloadURL().then((url) => {
+              const date = new Date();
+              var today = date.toDateString();
+              var posts = {
+                제목: $('#title').val(),
+                내용: $('#content').val(),
+                날짜1: today,
+                이미지: url
+              };
+              db.collection('post')
+                .add(posts)
+                .then(() => {
+                  alert('글을 올렸습니다');
+                  window.location.href = '/index.html';
+                })
+                .catch((err) => {
+                  console.log(err);
+                  window.location.href = '/404.html';
+                });
+            });
+          }
+        );
+      });
+    </script>
+  </body>
+</html>

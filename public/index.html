@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+    <html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CITA:MAIN</title>
+    <!-- CSS -->
+    <!-- <link href="./CSS/ChatMainStyle.css" rel="stylesheet"> -->
+    <link href="./CSS/main.css" rel="stylesheet">
+    <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon"> -->
+    <!-- FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="header">
+        <div class="header1">
+            <span class="cita" onClick ="location.href='./index.html'">CITA</span>
+            <span onClick ="location.href='./chatindex.html'"><i class="material-icons icon" id="change">cached</i></span>
+
+            <span><a href="./upload_feed.html"><i class="material-icons icon" id="change">edit</i></span></a>
+        </div>
+
+        <div class="header2">
+            <span id="username" class="username_style"></span>
+            <span id="userProfile" class="prof" onClick ="location.href='./login.html'"><img src="./image/woman.jpg" width="100%" height="130%" /></span>
+        </div>
+    </div>
+    <br/>
+    <!-- feed 추가로 피드 게시하는 칸-->
+    <div class="container">
+
+<script>
+// FIREBASE CONFIG    
+const firebaseConfig = {
+    apiKey: "AIzaSyDAviFAwj0F60qzBjhGymUL-hzpErarvl8",
+    authDomain: "cita-a057c.firebaseapp.com",
+    databaseURL: "https://cita-a057c-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "cita-a057c",
+    storageBucket: "cita-a057c.appspot.com",
+    messagingSenderId: "583943011318",
+    appId: "1:583943011318:web:98f9864c4557a420fc25d7",
+    measurementId: "G-35W2MMH9S8"
+};
+firebase.initializeApp(firebaseConfig);
+</script>
+
+
+<script>
+    const db = firebase.firestore();
+
+    var data = localStorage.getItem('user')
+    firebase.auth().onAuthStateChanged((user)=> {
+        // login 있으면
+        if (user) {
+            console.log(user);
+            console.log(user.displayName);
+            $('#username').html("안녕, " + user.displayName);
+
+        } else {
+            console.log("no users");
+            $('#username').html("게스트 유저");
+        }
+    })
+
+    db.collection('post').get().then((result)=>{
+        result.forEach((doc)=> {
+            var template = 
+            `<div class="feed">
+            <div class="img_box"><a href = "./detail.html?id=${doc.id}"><img src="${doc.data().이미지}" class="feed_img" /></a></div>
+            <span class="material-symbols-outlined">favorite</span>
+            <span class="material-symbols-outlined">comment</span>
+            <hr class="feed_border" />
+            <div class="feed_text">${doc.data().제목}</div>
+            <div class="feed_date">${doc.data().날짜1}</div></div>
+            `
+            $('.container').append(template);
+        })
+    })
+
+    $('#userProfile').click(function () {
+        firebase.auth().signOut().then(()=> {
+          console.log("sign out");
+          alert('로그아웃 했습니다')
+          window.location.href = './login.html';
+        })
+      });
+
+</script>
+
+
+</script>
+
+</body>
+</html>

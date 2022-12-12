@@ -1,0 +1,298 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  @font-face {
+    font-family: 'Cafe24Ssurround';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Katuri';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_13@1.0/Katuri.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Tenada';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/Tenada.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+  .header {
+    border: 0px solid rgb(0, 0, 0);
+    width: 346px;
+    height: 40px;
+    text-align: left;
+    font-size: 45px;
+    padding: 5px 5px 5px 5px;
+    margin: 0px 12px 0px 9px;
+    margin-bottom: 0px;
+    position: fixed;
+    background-color: #ffffff;
+    border-bottom: solid 4px #ceb4ff;
+    /* border-top: solid #ceb4ff; */
+    display: flex;
+    justify-content: space-between;
+  }
+  .header1 {
+    display: flex;
+    justify-content: space-between;
+    width: 140px;
+    border-width: 1px;
+    float: left;
+    /* border: solid 1px black; */
+  }
+  .header2 {
+    display: flex;
+    justify-content: space-between;
+    width: 90px;
+    /* border: solid 1px black; */
+  }
+  .header_border {
+    margin: 5px 12px 0px 12px;
+    height: 3px;
+    background-color: #ceb4ff;
+    border: 0px;
+  }
+  
+  #change {
+    color: #a17fe0;
+    font-size: 40px;
+  
+    flex: 3;
+    vertical-align: text-top;
+  }
+  #search {
+    color: #a17fe0;
+    font-size: 40px;
+  
+    vertical-align: text-top;
+  }
+  #user {
+    color: #a17fe0;
+    font-size: 40px;
+    text-align: right;
+    vertical-align: text-top;
+  }
+  .cita {
+    font-size: 37px;
+    font-family: 'Tenada';
+    background-image: linear-gradient(to right, #ec77ab 0%, #7873f5 100%);
+    color: transparent;
+    -webkit-background-clip: text;
+    vertical-align: 10px;
+    vertical-align: middle;
+    margin-top: 5px;
+  }
+  
+  body {
+    background-color: #ffffff;
+    font-family: 'GilbeotRainbow';
+  }
+  .container {
+    margin: 0px 0px 7px 7px;
+  }
+  .write_box {
+    border: 3px solid #a17fe0;
+    background-color: white;
+    width: 350px;
+    height: 300px;
+    margin: 2px;
+    float: left;
+    border-radius: 15px;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+    font-family: 'GangwonEdu_OTFBoldA';
+  }
+  .content_write {
+    margin: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    border-style: hidden;
+    background-color: #5c26c100;
+  }
+  .img_box {
+    border: 3px solid #a17fe0;
+    background-color: white;
+    width: 350px;
+    height: 190px;
+    margin: 2px;
+    margin-top: 5px;
+    float: left;
+    border-radius: 15px;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+    font-family: 'GangwonEdu_OTFBoldA';
+  }
+  .btn-upload {
+    width: 70px;
+    height: 30px;
+    background: #fff;
+    border: 1px solid rgb(77, 77, 77);
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    background: linear-gradient(to bottom right, #a17fe0, #5d26c1);
+    color: white;
+    border-style: hidden;
+    border-radius: 15px;
+  }
+  
+  #file {
+    display: none;
+  }
+  .choiced_img {
+    padding: 0px 0px 0px 10px;
+  }
+  .choiced_img_de {
+    border: solid 1px black;
+    width: 90px;
+    height: 120px;
+    margin: 0px 0px 0px 3px;
+  }
+  #send {
+    background-color: #f9e9ff;
+    border: solid 3px #a17fe0;
+    border-radius: 25px;
+    height: 40px;
+    width: 70px;
+    position: absolute;
+    top: 580px;
+    left: 290px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+    font-size: 20px;
+    font-family: 'Katuri';
+    color: #a17fe0;
+  }
+  #cancle {
+    background-color: #f9e9ff;
+    border: solid 3px #a17fe0;
+    border-radius: 25px;
+    height: 40px;
+    width: 70px;
+    position: absolute;
+    top: 580px;
+    left: 205px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+    font-size: 20px;
+    font-family: 'Katuri';
+    color: #a17fe0;
+  }
+  .username_style{
+    font-size:20px; 
+    font-family:'GangwonEdu_OTFBoldA'; 
+    padding-right:5px; 
+    padding-top:3px;
+    border: #ff0000 solid 0px;
+    margin-left: -40px;
+    margin-right: 5px;
+    width: 100px;
+    height: 20px;
+    color: #6560ff;
+    padding-top: 10px;
+  }
+  
+  .prof {
+    border-radius: 70%;
+    width: 40px;
+    height: 40px;
+    margin: auto;
+    margin-top: 0px;
+    border: 0px #a17fe0 solid;
+    overflow: hidden;
+  }
+/*버튼 눌리는 효과*/
+.btn:active {
+
+    box-shadow: inset -.3rem -.1rem 1.4rem  #FBFBFB, inset .3rem .4rem .8rem #BEC5D0; 
+    cursor: pointer;
+
+}
+.btn {
+
+  width: 300px;
+  height: 90px;
+
+/* 위치 */
+position: relative;
+left: 250px;
+top: 150px;
+
+/* 상자 디자인 큰틀*/
+margin-bottom: 30px;
+border: 0px;
+background-color: #E4EBF5;
+  
+/* 그림자 */
+border-radius: 10px;
+box-shadow:.8rem .5rem 1.4rem  #BEC5D0, -.3rem -.4rem .8rem #FBFBFB;
+/* box-shadow:-.2rem -.2rem 1.8rem white, .8rem .8rem 1.4rem  #AAB7CB; */
+
+/* 글씨 */
+color: #333333;
+font-size: 1.7em;
+font-weight: bold;
+
+animation-name: keybtn-language;
+animation-duration: .2s;
+
+}
+
+.fileclass {
+  display: none;
+  background: black;
+}
+
+
+.button-63 {
+  align-items: center;
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  width:300px;
+  padding: 19px 24px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.button-63:active,
+.button-63:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .button-63 {
+    font-size: 24px;
+    min-width: 196px;
+  }
+}
